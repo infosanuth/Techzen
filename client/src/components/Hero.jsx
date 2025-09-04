@@ -19,8 +19,25 @@ const Hero = () => {
             <button className='bg-blue-600 px-6 py-2 rounded text-white m-1'>Search</button>
         </div>
       </div>
+
+      <div className="border border-gray-200 shadow-md rounded-2xl mx-2 mt-8 bg-white">
+  <div className="flex items-center justify-center gap-6 lg:gap-16">
+    <p className="font-medium">Trusted by</p>
+
+    <img className="h-10 mt-1" src={assets.wso2_logo} alt="" />
+    <img className="h-30 -ml-5 -mt-1" src={assets.lseg_logo} alt="" />
+    <img className="h-10 -mt-1 -ml-10" src={assets.wiley_logo} alt="" />
+    <img className="h-10 -mt-1" src={assets.ifs_logo} alt="" />
+    <img className="h-15 -mt-2" src={assets.logo_99x} alt="" />
+
+  </div>
+</div>
+
+
+
+
     </div>
   )
-}
+} 
 
 export default Hero
