@@ -6,6 +6,7 @@ import logo_99x from "./99x.png"
 import wiley_logo from "./wiley.png"
 import ifs_logo from "./ifs.png"
 import lseg_logo from "./lseg.png"
+import cross_icon from "./cross_icon.svg"
 
 
 export const assets = {
@@ -17,4 +18,5 @@ export const assets = {
     wiley_logo,
     ifs_logo,
     lseg_logo,
+    cross_icon,
 }
