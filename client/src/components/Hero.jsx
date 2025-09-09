@@ -41,7 +41,7 @@ const Hero = () => {
       </div>
 
       <div className="border border-gray-200 shadow-md rounded-2xl mx-2 mt-8 bg-white">
-        <div className="flex items-center justify-center gap-6 lg:gap-16">
+        <div className="max-sm:hidden flex items-center justify-center gap-6 lg:gap-16">
           <p className="font-medium">Trusted by</p>
 
           <img className="h-10 mt-1" src={assets.wso2_logo} alt="" />
