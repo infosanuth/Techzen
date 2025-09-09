@@ -8,6 +8,8 @@ import ifs_logo from "./ifs.png"
 import lseg_logo from "./lseg.png"
 import cross_icon from "./cross_icon.svg"
 import company_icon from "./company_icon.svg" 
+import left_arrow_icon from "./left_arrow_icon.svg"
+import right_arrow_icon from "./right_arrow_icon.svg"
 
 
 export const assets = {
@@ -21,6 +23,9 @@ export const assets = {
     lseg_logo,
     cross_icon,
     company_icon,
+    left_arrow_icon,
+    right_arrow_icon,
+
     
 }
 
