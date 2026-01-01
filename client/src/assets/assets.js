@@ -10,6 +10,9 @@ import cross_icon from "./cross_icon.svg"
 import company_icon from "./company_icon.svg" 
 import left_arrow_icon from "./left_arrow_icon.svg"
 import right_arrow_icon from "./right_arrow_icon.svg"
+import play_store from "./play_store.svg"
+import app_store from "./app_store.svg"
+import app_main_img from "./app_main_img.png"
 
 
 export const assets = {
@@ -25,6 +28,9 @@ export const assets = {
     company_icon,
     left_arrow_icon,
     right_arrow_icon,
+    play_store,
+    app_store,
+    app_main_img
 
     
 }
