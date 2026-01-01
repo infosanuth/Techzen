@@ -13,6 +13,9 @@ import right_arrow_icon from "./right_arrow_icon.svg"
 import play_store from "./play_store.svg"
 import app_store from "./app_store.svg"
 import app_main_img from "./app_main_img.png"
+import facebook_icon from "./facebook_icon.svg"
+import twitter_icon from "./twitter_icon.svg"
+import instagram_icon from "./instagram_icon.svg"
 
 
 export const assets = {
@@ -30,9 +33,10 @@ export const assets = {
     right_arrow_icon,
     play_store,
     app_store,
-    app_main_img
-
-    
+    app_main_img,
+    facebook_icon,
+    twitter_icon,
+    instagram_icon
 }
 
 export const JobCategories = [
