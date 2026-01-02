@@ -15,6 +15,9 @@ const Hero = () => {
       location: locationRef.current.value
     })
     setIsSearched(true)
+
+    document.getElementById("job-list")?.scrollIntoView({ behavior: "smooth" })  // ChatGPT
+
     console.log({
       title: titleRef.current.value,
       location: locationRef.current.value
