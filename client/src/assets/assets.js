@@ -19,6 +19,7 @@ import instagram_icon from "./instagram_icon.svg"
 import suitcase_icon from "./suitcase_icon.svg"
 import person_icon from "./person_icon.svg"
 import money_icon from "./money_icon.svg"
+import profile_upload from "./profile_upload_icon.svg"
 
 
 export const assets = {
@@ -42,7 +43,8 @@ export const assets = {
     instagram_icon,
     suitcase_icon,
     person_icon,
-    money_icon
+    money_icon,
+    profile_upload
 }
 
 export const JobCategories = [
