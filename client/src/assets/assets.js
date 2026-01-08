@@ -67,6 +67,16 @@ export const JobLocations = [
     "New York"
 ]
 
+export const jobsApplied = [
+    {
+        company: '99x',
+        title: 'Full stack Developer',
+        location: 'Colombo',
+        status: 'pending',
+        logo: company_icon,
+    }
+]
+
 export const jobsData = [
     {
         _id: '1',
