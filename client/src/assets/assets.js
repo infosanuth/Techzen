@@ -22,6 +22,7 @@ import money_icon from "./money_icon.svg"
 import profile_upload from "./profile_upload_icon.svg"
 import email_icon from "./email_icon.svg"
 import lock_icon from "./lock_icon.svg"
+import upload_area from "./upload_area.svg"
 
 
 export const assets = {
@@ -48,7 +49,8 @@ export const assets = {
     money_icon,
     profile_upload,
     email_icon,
-    lock_icon
+    lock_icon,
+    upload_area
 }
 
 export const JobCategories = [
