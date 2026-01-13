@@ -146,13 +146,6 @@ const JobListing = () => {
                             </a>
                         </div>
 
-                        <div className="flex justify-center">
-                            <Link to="/jobs">
-                                <button className="px-6 py-2 border border-blue-500 text-blue-500 rounded hover:bg-blue-500 hover:text-white transition">
-                                    View All Jobs
-                                </button>
-                            </Link>
-                        </div>
                     </div>
 
                 )}
