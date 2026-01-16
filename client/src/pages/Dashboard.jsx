@@ -1,6 +1,10 @@
 import React from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets'
+import { MdOutlineLibraryAdd } from "react-icons/md"
+import { FiHome } from "react-icons/fi"
+import { RiListView } from "react-icons/ri";
+import { VscSettingsGear } from "react-icons/vsc";
 
 const Dashboard = () => {
 
@@ -26,6 +30,37 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <div className='flex items-start'>
+
+        {/* Sidebar */}
+        <div className='inline-block min-h-screen border-r-1'>
+          <ul className='flex flex-col items-start pt-5 text-gray-800'>
+            <NavLink className={({ isActive }) => `flex items-center p-3 sm:px-6 gap-2 w-full hover:bg-gray-100 ${isActive && 'bg-blue-100 border-r-4 border-blue-500'}`} to={'/dashboard/add-job'}>
+              <MdOutlineLibraryAdd className='size-6' />
+              <p className='max-sm:hidden'>Add Job</p>
+            </NavLink>
+            <NavLink className={({ isActive }) => `flex items-center p-3 sm:px-6 gap-2 w-full hover:bg-gray-100 ${isActive && 'bg-blue-100 border-r-4 border-blue-500'}`} to={'/dashboard/manage-job'}>
+              <FiHome className='size-6' />
+              <p className='max-sm:hidden'>Manage Job</p>
+            </NavLink>
+            <NavLink className={({ isActive }) => `flex items-center p-3 sm:px-6 gap-2 w-full hover:bg-gray-100 ${isActive && 'bg-blue-100 border-r-4 border-blue-500'}`} to={'/dashboard/view-applications'}>
+              <RiListView className='size-6'/>
+              <p className='max-sm:hidden'>View Applications</p>
+            </NavLink>
+            <NavLink className={({ isActive }) => `flex items-center p-3 sm:px-6 gap-2 w-full hover:bg-gray-100 ${isActive && 'bg-blue-100 border-r-4 border-blue-500'}`} to={'/dashboard/settings'}>
+              <VscSettingsGear className='size-6'/>
+              <p className='max-sm:hidden'>Settings</p>
+            </NavLink>
+          </ul>
+        </div>
+
+        <div>
+          <Outlet />
+        </div>
+
+      </div>
+
     </div>
   )
 }

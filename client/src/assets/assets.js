@@ -50,7 +50,8 @@ export const assets = {
     profile_upload,
     email_icon,
     lock_icon,
-    upload_area
+    upload_area,
+
 }
 
 export const JobCategories = [
