@@ -12,6 +12,7 @@ import ManageJobs from './pages/ManageJobs'
 import ViewApplication from './pages/ViewApplication'
 import ApplicantProfile from './pages/ApplicantProfile'
 import Settings from './pages/Settings'
+import 'quill/dist/quill.snow.css'
 
 const App = () => {
 
