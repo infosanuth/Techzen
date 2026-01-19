@@ -23,6 +23,7 @@ import profile_upload from "./profile_upload_icon.svg"
 import email_icon from "./email_icon.svg"
 import lock_icon from "./lock_icon.svg"
 import upload_area from "./upload_area.svg"
+import profile_img from "./profile_img.png"
 
 
 export const assets = {
@@ -51,6 +52,7 @@ export const assets = {
     email_icon,
     lock_icon,
     upload_area,
+    profile_img
 
 }
 
@@ -84,6 +86,16 @@ export const jobsApplied = [
         logo: company_icon,
     }
 ]
+
+export const viewApplicationsPageData = [
+  {_id: 1, name: "Ravindi Fernando", jobTitle: "Software Engineer", location: "Colombo", imgsrc: profile_img},
+  {_id: 2, name: "Nipuna Perera", jobTitle: "Frontend Developer", location: "Gampaha", imgsrc: profile_img},
+  {_id: 3, name: "Sachini Jayawardena", jobTitle: "UI/UX Designer", location: "Kandy", imgsrc: profile_img},
+  {_id: 4, name: "Kasun Silva", jobTitle: "Backend Developer", location: "Negombo", imgsrc: profile_img},
+  {_id: 5, name: "Tharindu Wijesinghe", jobTitle: "Full Stack Developer", location: "Kurunegala", imgsrc: profile_img},
+  {_id: 6, name: "Dulani Rathnayake", jobTitle: "QA Engineer", location: "Matara", imgsrc: profile_img},
+  {_id: 7, name: "Chamod Bandara", jobTitle: "DevOps Engineer", location: "Badulla", imgsrc: profile_img},
+];
 
 export const jobsData = [
     {
