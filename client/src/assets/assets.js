@@ -24,6 +24,8 @@ import email_icon from "./email_icon.svg"
 import lock_icon from "./lock_icon.svg"
 import upload_area from "./upload_area.svg"
 import profile_img from "./profile_img.png"
+import resume_download_icon from "./resume_download_icon.svg"
+
 
 
 export const assets = {
@@ -52,7 +54,8 @@ export const assets = {
     email_icon,
     lock_icon,
     upload_area,
-    profile_img
+    profile_img,
+    resume_download_icon,
 
 }
 
