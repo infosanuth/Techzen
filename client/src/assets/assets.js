@@ -90,6 +90,19 @@ export const jobsApplied = [
     }
 ]
 
+export const manageJobData = [
+  [
+  { _id: 1, title: "Software Engineer", date: 1729102298497, location: "Colombo", applicants: 42, visible: true },
+  { _id: 2, title: "Frontend Developer", date: 1729285098497, location: "Kandy", applicants: 28, visible: true },
+  { _id: 3, title: "Backend Developer", date: 1729467898497, location: "Galle", applicants: 15, visible: false },
+  { _id: 4, title: "DevOps Engineer", date: 1729650698497, location: "Remote", applicants: 33, visible: true },
+  { _id: 5, title: "QA Engineer", date: 1729833498497, location: "Negombo", applicants: 19, visible: false },
+  { _id: 6, title: "UI/UX Designer", date: 1730016298497, location: "Colombo", applicants: 22, visible: true }
+]
+
+];
+
+
 export const viewApplicationsPageData = [
   {_id: 1, name: "Ravindi Fernando", jobTitle: "Software Engineer", location: "Colombo", imgsrc: profile_img},
   {_id: 2, name: "Nipuna Perera", jobTitle: "Frontend Developer", location: "Gampaha", imgsrc: profile_img},
