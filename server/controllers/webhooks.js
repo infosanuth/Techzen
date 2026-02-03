@@ -34,16 +34,21 @@ export const clerkWebhook = async (req, res) => {
 
             case 'user.updated': {
                 const userData = {
-                    email: data.email_addresses[0].email_address,
-                    name: data.first_name + " " + data.last_name,
+                    email: data.email_addresses?.[0]?.email_address,
+                    name: `${data.first_name ?? ""} ${data.last_name ?? ""}`.trim(),
                     image: data.image_url,
-                }
-                await User.findByIdAndUpdate(data.id, userData)
+                };
                 
+                await User.findByIdAndUpdate(data.id, userData)
+                res.json({})
+                break;
+
             }
 
             case 'user.deleted': {
-
+                await User.findByIdAndDelete(data.id)
+                res.json({})
+                break;
             }
 
             default:
@@ -52,6 +57,7 @@ export const clerkWebhook = async (req, res) => {
 
 
     } catch (error) {
+        console.log(error.message);
         return res.status(400).json({ message: "Invalid webhook signature" })
     }
 }
