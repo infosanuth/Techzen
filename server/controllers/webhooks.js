@@ -1,63 +1,56 @@
 import { Webhook } from "svix";
 import User from "../models/User.js";
 
-// API Controller Function to Manage Clerk User with database
 export const clerkWebhook = async (req, res) => {
-    try {
+  try {
+    const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
 
-        const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET)
+    // req.body is a Buffer here (raw)
+    await whook.verify(req.body, {
+      "svix-id": req.headers["svix-id"],
+      "svix-timestamp": req.headers["svix-timestamp"],
+      "svix-signature": req.headers["svix-signature"]
+    });
 
-        await whook.verify(JSON.stringify(req.body), {
-            "svix-id": req.headers["svix-id"],
-            "svix-timestamp": req.headers["svix-timestamp"],
-            "svix-signature": req.headers["svix-signature"]
-        })
+    // Parse the body now
+    const event = JSON.parse(req.body.toString());
+    const { data, type } = event;
 
-        // Getting data from request body
+    // console.log("Webhook type:", type);
 
-        const { data, type } = req.body
-
-        switch (type) {
-            case 'user.created': {
-
-                const userData = {
-                    _id: data.id,
-                    email: data.email_addresses[0].email_address,
-                    name: data.first_name + " " + data.last_name,
-                    image: data.image_url,
-                    resume: ''
-                }
-                await User.create(userData)
-                res.json({})
-                break;
-            }
-
-            case 'user.updated': {
-                const userData = {
-                    email: data.email_addresses?.[0]?.email_address,
-                    name: `${data.first_name ?? ""} ${data.last_name ?? ""}`.trim(),
-                    image: data.image_url,
-                };
-                
-                await User.findByIdAndUpdate(data.id, userData)
-                res.json({})
-                break;
-
-            }
-
-            case 'user.deleted': {
-                await User.findByIdAndDelete(data.id)
-                res.json({})
-                break;
-            }
-
-            default:
-                break;
-        }
-
-
-    } catch (error) {
-        console.log(error.message);
-        return res.status(400).json({ message: "Invalid webhook signature" })
+    switch (type) {
+      case "user.created": {
+        // console.log("Creating user in DB");
+        const userData = {
+          _id: data.id,
+          email: data.email_addresses[0].email_address,
+          name: `${data.first_name} ${data.last_name}`,
+          image: data.image_url,
+          resume: ""
+        };
+        await User.create(userData);
+        break;
+      }
+      case "user.updated": {
+        const userData = {
+          email: data.email_addresses?.[0]?.email_address,
+          name: `${data.first_name ?? ""} ${data.last_name ?? ""}`.trim(),
+          image: data.image_url,
+        };
+        await User.findByIdAndUpdate(data.id, userData);
+        break;
+      }
+      case "user.deleted": {
+        await User.findByIdAndDelete(data.id);
+        break;
+      }
+      default:
+        break;
     }
-}
+
+    res.json({ success: true });
+  } catch (error) {
+    console.log("Webhook error:", error.message);
+    return res.status(400).json({ message: "Invalid webhook signature" });
+  }
+};
