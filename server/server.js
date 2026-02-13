@@ -25,6 +25,8 @@ app.post(
 app.use(cors())
 app.use(express.json())
 
+app.use('/api/company', companyRoutes)
+
 
 // Route
 app.get('/', (req, res) => res.send("API Working"))
