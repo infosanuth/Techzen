@@ -5,6 +5,7 @@ import connectDB from './config/db.js'
 import { clerkWebhook } from './controllers/webhooks.js'
 import companyRoutes from './routes/companyRoutes.js'
 import connectCloudinary from './config/cloudinary.js'
+import jobRoutes from './routes/jobRoutes.js'
 
 
 // Initialize Express
@@ -26,6 +27,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/company', companyRoutes)
+app.use('/api/jobs', jobRoutes)
 
 
 // Route
