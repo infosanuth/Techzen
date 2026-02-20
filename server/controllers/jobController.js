@@ -14,6 +14,28 @@ const getJobs = async (req, res) => {
     }
 }
 
+// Get a single job by ID
+const getJobByID = async (req, res) => {
+    try {
+
+        const { id } = req.params
+
+        const job = await Job.findById(id)
+            .populate({ path: 'companyId', select: '-password' })
+
+        if (!job) {
+            return res.json({ success: false, message: 'Job not found' })
+        }
+
+        res.json({ success: true, job })
+
+    } catch (error) {
+        res.json({ success: false, message: error.message })
+    }
+}
+
+
 export {
-    getJobs
+    getJobs,
+    getJobByID
 }
