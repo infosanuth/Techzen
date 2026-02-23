@@ -140,11 +140,35 @@ const getCompanyPostedJobs = async (req, res) => {
     }
 }
 
+// Change job visibility
+const changeVisibility = async (req, res) => {
+    try {
+
+        const { id } = req.body
+
+        const companyId = req.company._id
+
+        const job = await Job.findById(id)
+
+        if (companyId.toString() === job.companyId.toString()) {
+            job.visible = !job.visible
+        }
+
+        await job.save()
+
+        res.json({ success: true, job })
+
+    } catch (error) {
+        res.json({ success: false, message: error.message })
+    }
+}
+
 export {
     registerCompany,
     loginCompany,
     getCompanyData,
     postJob,
-    getCompanyPostedJobs
+    getCompanyPostedJobs,
+    changeVisibility
 
 }
