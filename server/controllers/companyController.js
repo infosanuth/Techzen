@@ -125,11 +125,26 @@ const postJob = async (req, res) => {
     }
 }
 
+// Get Company Posted Jobs
+const getCompanyPostedJobs = async (req, res) => {
+    try {
+
+        const companyId = req.company._id
+
+        const jobs = await Job.find({ companyId })
+
+        res.json({ success: true, jobsData: jobs })
+
+    } catch (error) {
+        res.json({ success: false, message: error.message })
+    }
+}
 
 export {
     registerCompany,
     loginCompany,
     getCompanyData,
     postJob,
+    getCompanyPostedJobs
 
 }
