@@ -84,6 +84,14 @@ const loginCompany = async (req, res) => {
 // Get company data
 const getCompanyData = async (req, res) => {
 
+    try {
+        const company = req.company
+
+        res.json({ success: true, company })
+
+    } catch (error) {
+        res.json({ success: false, message: error.message })
+    }
 }
 
 // Post a new job
@@ -115,9 +123,6 @@ const postJob = async (req, res) => {
         res.json({ success: false, message: error.message })
 
     }
-
-
-
 }
 
 
@@ -125,6 +130,6 @@ export {
     registerCompany,
     loginCompany,
     getCompanyData,
-    postJob
+    postJob,
 
 }
