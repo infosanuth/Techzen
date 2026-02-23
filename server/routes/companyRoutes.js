@@ -1,5 +1,5 @@
 import express from 'express'
-import { registerCompany, loginCompany, getCompanyData, postJob } from '../controllers/companyController.js'
+import { registerCompany, loginCompany, getCompanyData, postJob, getCompanyPostedJobs } from '../controllers/companyController.js'
 import upload from '../config/multer.js'
 import { protectCompany } from '../middleware/authMiddleware.js'
 
@@ -16,5 +16,9 @@ router.get('/company', protectCompany, getCompanyData)
 
 // Post a job
 router.post('/post-job', protectCompany, postJob)
+
+// Get Company Job List
+router.get('/list-jobs', protectCompany, getCompanyPostedJobs)
+
 
 export default router
