@@ -7,6 +7,7 @@ import companyRoutes from './routes/companyRoutes.js'
 import connectCloudinary from './config/cloudinary.js'
 import jobRoutes from './routes/jobRoutes.js'
 import {clerkMiddleware } from '@clerk/express'
+import userRoutes from './routes/userRoutes.js'
 
 
 // Initialize Express
@@ -30,6 +31,7 @@ app.use(clerkMiddleware())
 
 app.use('/api/company', companyRoutes)
 app.use('/api/jobs', jobRoutes)
+app.use('api/users',userRoutes)
 
 
 // Route
