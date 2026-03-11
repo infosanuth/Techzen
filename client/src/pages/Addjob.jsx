@@ -1,6 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Quill from 'quill'
 import { JobCategories, JobLocations } from '../assets/assets'
+import axios from 'axios'
+import { AppContext } from '../context/AppContext'
+import { toast } from 'react-toastify'
 
 
 const AddJob = () => {
@@ -14,6 +17,34 @@ const AddJob = () => {
   const editorRef = useRef(null)
   const quillRef = useRef(null)
 
+  const { backendUrl, companyToken } = useContext(AppContext)
+
+  const onSubmitHandler = async (e) => {
+    e.preventDefault()
+
+    try {
+
+      const description = quillRef.current.root.innerHTML
+
+      const { data } = await axios.post(backendUrl + '/api/company/post-job',
+        { title, description, location, salary, category, level },
+        { headers: { token: companyToken } }
+      )
+
+      if (data.success) {
+        toast.success(data.message)
+        setTitle('')
+        setSalary(0)
+        quillRef.current.root.innerHTML = ""
+      } else {
+        toast.error(data.message)
+      }
+
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
   useEffect(() => {
     // Initiate Qill only once
     if (!quillRef.current && editorRef.current) {
@@ -24,7 +55,7 @@ const AddJob = () => {
   }, [])
 
   return (
-    <form className='container p-4 flex flex-col w-full items-start gap-3'>
+    <form onSubmit={onSubmitHandler} className='container flex flex-col items-start w-full gap-3 p-4'>
       <div className='w-full'>
         <p className='mb-2 '>Job Title</p>
         <input onChange={e => setTitle(e.target.value)} value={title} type="text" placeholder='Type here' required
@@ -36,7 +67,7 @@ const AddJob = () => {
         <div ref={editorRef}></div>
       </div>
 
-      <div className='flex flex-col sm:flex-row gap-2 w-full sm:gap-8'>
+      <div className='flex flex-col w-full gap-2 sm:flex-row sm:gap-8'>
 
         <div>
           <p className='mb-2'>Job Category</p>
@@ -46,7 +77,7 @@ const AddJob = () => {
             ))}
           </select>
         </div>
- 
+
         <div>
           <p className='mb-2'>Job Location</p>
           <select className='w-full px-3 py-2 border-2 border-gray-300 rounded' onChange={e => setLocation(e.target.value)}>
@@ -55,7 +86,7 @@ const AddJob = () => {
             ))}
           </select>
         </div>
-  
+
         <div>
           <p className='mb-2'>Job Category</p>
           <select className='w-full px-3 py-2 border-2 border-gray-300 rounded' onChange={e => setCategory(e.target.value)}>
@@ -71,7 +102,7 @@ const AddJob = () => {
         <input min={0} className='w-full px-3 py-2 border-2 border-gray-300 rounded sm:w-[120px]' onChange={e => setSalary(e.target.value)} type="Number" placeholder='10000' />
       </div>
 
-      <button className='w-28 py-3 mt-4 bg-black text-white rounded'>ADD</button>
+      <button className='py-3 mt-4 text-white bg-black rounded w-28'>ADD</button>
     </form>
   )
 }
