@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Route, Router, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import ApplyJob from './pages/ApplyJob'
 import Applications from './pages/Applications'
@@ -13,7 +13,7 @@ import ViewApplication from './pages/ViewApplication'
 import ApplicantProfile from './pages/ApplicantProfile'
 import Settings from './pages/Settings'
 import 'quill/dist/quill.snow.css'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
