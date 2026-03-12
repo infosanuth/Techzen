@@ -56,7 +56,7 @@ const ManageJobs = () => {
             </tr>
           </thead>
           <tbody>
-            {manageJobData.map((job, index) => (
+            {jobs.map((job, index) => (
               <tr key={index} className='text-gray-700'>
                 <td className='px-4 py-2 border-b max-sm:hidden'>{index + 1}</td>
                 <td className='px-4 py-2 border-b'>{job.title}</td>
