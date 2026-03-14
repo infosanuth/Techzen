@@ -22,6 +22,13 @@ const Dashboard = () => {
     navigate('/')
   }
 
+  useEffect(() => {
+    if (companydata) {
+      navigate('/dashboard/manage-job')
+    }
+  }, [companydata])
+
+
   return (
     <div className='min-h-screen'>
 
