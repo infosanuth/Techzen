@@ -35,6 +35,29 @@ const ManageJobs = () => {
 
   }
 
+  // Function to change Job Visibility
+
+  const changeJobVisibility = async (id) => {
+
+    try {
+      const { data } = await axios.post(backendUrl + '/api/company/change-visibility',
+        { id },
+        { headers: { token: companyToken } }
+      )
+
+      if (data.success) {
+        toast.success(data.message)
+        fetchCompanyJobs()
+      } else {
+        toast.error(error.message)
+      }
+
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
+
   useEffect(() => {
     if (companyToken) {
       fetchCompanyJobs()
@@ -64,7 +87,7 @@ const ManageJobs = () => {
                 <td className='px-4 py-2 border-b max-sm:hidden'>{job.location}</td>
                 <td className='px-4 py-2 text-center border-b'>{job.applicants}</td>
                 <td className='px-4 py-2 border-b'>
-                  <input className='ml-4 scale-125' type="checkbox" />
+                  <input onChange={() => changeJobVisibility(job._id)} className='ml-4 scale-125' type="checkbox" checked={job.visible} />
                 </td>
               </tr>
             ))}
