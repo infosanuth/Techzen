@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets'
 import { MdOutlineLibraryAdd } from "react-icons/md"
@@ -11,7 +11,16 @@ const Dashboard = () => {
 
   const navigate = useNavigate()
 
-  const { companydata } = useContext(AppContext)
+  const { companydata, setCompanyData, setCompanyToken } = useContext(AppContext)
+
+  // Function to logout for company
+
+  const logout = () => {
+    setCompanyToken(null)
+    localStorage.removeItem('companyToken')
+    setCompanyData(null)
+    navigate('/')
+  }
 
   return (
     <div className='min-h-screen'>
@@ -27,7 +36,7 @@ const Dashboard = () => {
                 <img className='w-8 border border-white rounded-full' src={companydata.image} alt="" />
                 <div className='absolute top-0 right-0 z-10 hidden pt-12 text-black rounded group-hover:block'>
                   <ul className='p-2 m-0 text-sm list-none bg-white border rounded-md'>
-                    <li className='px-2 py-1 pr-10 cursor-pointer'>Logout</li>
+                    <li onClick={logout} className='px-2 py-1 pr-10 cursor-pointer'>Logout</li>
                   </ul>
                 </div>
               </div>
