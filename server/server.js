@@ -6,7 +6,7 @@ import { clerkWebhook } from './controllers/webhooks.js'
 import companyRoutes from './routes/companyRoutes.js'
 import connectCloudinary from './config/cloudinary.js'
 import jobRoutes from './routes/jobRoutes.js'
-import {clerkMiddleware } from '@clerk/express'
+import { clerkMiddleware } from '@clerk/express'
 import userRoutes from './routes/userRoutes.js'
 
 
@@ -31,7 +31,7 @@ app.use(clerkMiddleware())
 
 app.use('/api/company', companyRoutes)
 app.use('/api/jobs', jobRoutes)
-app.use('api/users',userRoutes)
+app.use('/api/users', userRoutes)
 
 
 // Route
@@ -42,5 +42,5 @@ app.get('/', (req, res) => res.send("API Working"))
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
+  console.log(`Server is running on port ${PORT}`)
 })
