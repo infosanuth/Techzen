@@ -1,5 +1,6 @@
 import JobApplication from "../models/JobApplication.js"
 import User from "../models/User.js"
+import Job from "../models/Job.js"
 import { v2 as cloudniary } from "cloudinary"
 
 // Get user data
