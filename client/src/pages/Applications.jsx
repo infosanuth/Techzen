@@ -16,7 +16,7 @@ const Applications = () => {
   const [isEdit, setIsEdit] = useState(false)
   const [resume, setResume] = useState(null)
 
-  const { backendUrl, userData, userApplications, fetchUserData } = useContext(AppContext)
+  const { backendUrl, userData, userApplication, fetchUserData } = useContext(AppContext)
 
   const updateResume = async () => {
 
@@ -83,13 +83,14 @@ const Applications = () => {
             <th className='px-4 py-3 text-left border-b'>Status</th>
           </thead>
           <tbody>
-            {jobsApplied.map((job, index) => true ? (
-              <tr>
+            {userApplication.map((job, index) => true ? (
+              <tr key={index}>
                 <td className='flex items-center gap-2 px-4 py-3'>
-                  <img className='w-8 h-8' src={job.logo} alt="" />
+                  <img className='w-8 h-8' src={job.companyId.image} alt="" />
+                  {job.companyId.name}
                 </td>
-                <td className='px-4 py-2 border-b'>{job.title}</td>
-                <td className='px-4 py-2 border-b max-sm:hidden'>{job.location}</td>
+                <td className='px-4 py-2 border-b'>{job.jobId.title}</td>
+                <td className='px-4 py-2 border-b max-sm:hidden'>{job.jobId.location}</td>
                 <td className='px-4 py-2 border-b max-sm:hidden'>{moment(job.date).format('ll')}</td>
                 <td className='px-4 py-2 border-b'>
                   <span className={`${job.status === 'Accepted' ? 'bg-green-100' : job.status === 'Rejected' ? 'bg-red-100' : 'bg-blue-100'} px-4 py-1.5 rounded`}>
