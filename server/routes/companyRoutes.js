@@ -1,5 +1,5 @@
 import express from 'express'
-import { registerCompany, loginCompany, getCompanyData, postJob, getCompanyPostedJobs, changeVisibility} from '../controllers/companyController.js'
+import { registerCompany, loginCompany, getCompanyData, postJob, getCompanyPostedJobs, changeVisibility, getCompanyJobApplicants } from '../controllers/companyController.js'
 import upload from '../config/multer.js'
 import { protectCompany } from '../middleware/authMiddleware.js'
 
@@ -22,5 +22,8 @@ router.get('/list-jobs', protectCompany, getCompanyPostedJobs)
 
 // Change Application Visibility
 router.post('/change-visibility', protectCompany, changeVisibility)
+
+// Get Applicant Data of Company
+router.get('/applicants', protectCompany, getCompanyJobApplicants)
 
 export default router
