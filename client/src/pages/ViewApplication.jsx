@@ -34,6 +34,28 @@ const ViewApplication = () => {
     }
   }, [companyToken])
 
+  // Function to Update Job Applications Status
+  const ChangeJobApplicationStatus = async (id, status) => {
+
+    try {
+
+      const { data } = await axios.post(backendUrl + '/api/company/change-status'
+        , { id, status },
+        { headers: { token: companyToken } }
+      )
+
+      if (data.success) {
+        fetchCompanyJobApplications()
+      } else {
+        toast.error(data.message)
+      }
+
+    } catch (error) {
+      toast.error(error.message)
+    }
+
+  }
+
 
   return applicants ? applicants.length === 0 ? (<div></div>) : (
     <div className='container p-4 mx-auto'>
@@ -77,8 +99,8 @@ const ViewApplication = () => {
                     <div className='relative inline-block text-left group'>
                       <button className='text-gray-500 action-button'>...</button>
                       <div className='absolute top-0 right-0 z-10 hidden w-32 mt-2 bg-white border border-gray-200 rounded shadow md:left-0 group-hover:block'>
-                        <button className='block w-full px-4 py-2 text-left text-blue-500 hover:bg-gray-100'>Accept</button>
-                        <button className='block w-full px-4 py-2 text-left text-red-500 hover:bg-gray-100'>Reject</button>
+                        <button onClick={()=> ChangeJobApplicationStatus(applicant._id,'Accepted')} className='block w-full px-4 py-2 text-left text-blue-500 hover:bg-gray-100'>Accept</button>
+                        <button onClick={()=> ChangeJobApplicationStatus(applicant._id,'Rejected')} className='block w-full px-4 py-2 text-left text-red-500 hover:bg-gray-100'>Reject</button>
                       </div>
                     </div>
                   </td>
