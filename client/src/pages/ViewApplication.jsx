@@ -35,7 +35,7 @@ const ViewApplication = () => {
   }, [companyToken])
 
 
-  return (
+  return applicants ? applicants.length === 0 ? (<div></div>) : (
     <div className='container p-4 mx-auto'>
       <div>
         <table className='w-full max-w-4xl bg-white border border-gray-200 max-sm:text-sm'>
@@ -51,23 +51,23 @@ const ViewApplication = () => {
           </thead>
           <tbody>
             {
-              viewApplicationsPageData.map((applicant, index) => (
+              applicants.filter(item => item.jobId && item.userId).map((applicant, index) => (
                 <tr key={index} className='text-gray-700'>
                   <td className='px-4 py-2 text-center border-b'>{index + 1}</td>
-                  <td className='px-4 py-2 border-b'>
+                  <td className='items-center px-4 py-2 text-center border-b felx'>
                     <div className='inline-flex items-center'>
-                      <img className='w-10 h-10 mr-3 rounded-full max-sm:hidden' src={applicant.imgsrc} alt="" />
-                      <span>{applicant.name}</span>
+                      <img className='w-10 h-10 mr-3 rounded-full max-sm:hidden' src={applicant.userId.image} alt="" />
+                      <span>{applicant.userId.name}</span>
                     </div>
                   </td>
                   {/* <td className='flex px-4 py-2 text-center border-b'>
                     <img className='w-10 h-10 mr-3 rounded-full max-sm:hidden' src={applicant.imgsrc} alt="" />
                     <span>{applicant.name}</span>
                   </td> */}
-                  <td className='px-4 py-2 border-b max-sm:hidden'>{applicant.jobTitle}</td>
-                  <td className='px-4 py-2 border-b max-sm:hidden'>{applicant.location}</td>
+                  <td className='px-4 py-2 border-b max-sm:hidden'>{applicant.jobId.title}</td>
+                  <td className='px-4 py-2 border-b max-sm:hidden'>{applicant.jobId.location}</td>
                   <td className='px-4 py-2 border-b'>
-                    <a href="" target='_blank'
+                    <a href={applicant.userId.resume} target='_blank'
                       className='inline-flex items-center gap-2 px-3 py-1 text-blue-400 rounded bg-blue-50'
                     >
                       Resume <img src={assets.resume_download_icon} alt="" />
@@ -89,7 +89,7 @@ const ViewApplication = () => {
         </table>
       </div>
     </div>
-  )
+  ) : <></>
 }
 
 export default ViewApplication
