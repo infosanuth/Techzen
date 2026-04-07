@@ -96,13 +96,19 @@ const ViewApplication = () => {
                     </a>
                   </td>
                   <td className='relative px-4 py-2 border-b'>
-                    <div className='relative inline-block text-left group'>
-                      <button className='text-gray-500 action-button'>...</button>
-                      <div className='absolute top-0 right-0 z-10 hidden w-32 mt-2 bg-white border border-gray-200 rounded shadow md:left-0 group-hover:block'>
-                        <button onClick={()=> ChangeJobApplicationStatus(applicant._id,'Accepted')} className='block w-full px-4 py-2 text-left text-blue-500 hover:bg-gray-100'>Accept</button>
-                        <button onClick={()=> ChangeJobApplicationStatus(applicant._id,'Rejected')} className='block w-full px-4 py-2 text-left text-red-500 hover:bg-gray-100'>Reject</button>
+                    {applicant.status === "Pending"
+                      ? <div className='relative inline-block text-left group'>
+                        <button className='text-gray-500 action-button'>...</button>
+                        <div className='absolute top-0 right-0 z-10 hidden w-32 mt-2 bg-white border border-gray-200 rounded shadow md:left-0 group-hover:block'>
+                          <button onClick={() => ChangeJobApplicationStatus(applicant._id, 'Accepted')} className='block w-full px-4 py-2 text-left text-blue-500 hover:bg-gray-100'>Accept</button>
+                          <button onClick={() => ChangeJobApplicationStatus(applicant._id, 'Rejected')} className='block w-full px-4 py-2 text-left text-red-500 hover:bg-gray-100'>Reject</button>
+                        </div>
                       </div>
-                    </div>
+                      : <div>
+                        {applicant.status}
+                      </div>
+                    }
+
                   </td>
                 </tr>
               ))
