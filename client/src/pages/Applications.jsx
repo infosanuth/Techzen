@@ -70,7 +70,7 @@ const Applications = () => {
                 <button onClick={updateResume} className='px-4 py-2 bg-green-100 border rounded-lg border-e-gray-400'>Save</button>
               </>
               : <div className='flex gap-2'>
-                <a className='px-4 py-2 text-blue-600 bg-blue-100 rounded-lg' href="">
+                <a target='_blank' href={userData.resume} className='px-4 py-2 text-blue-600 bg-blue-100 rounded-lg'>
                   Resume
                 </a>
                 <button onClick={() => setIsEdit(true)} className='px-4 py-2 text-gray-500 border rounded-lg border-y-gray-300'>
