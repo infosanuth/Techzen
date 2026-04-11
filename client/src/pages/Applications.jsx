@@ -47,10 +47,10 @@ const Applications = () => {
   }
 
   useEffect(() => {
-    if(user){
+    if (user) {
       fetchUserApplications()
     }
-  },[user])
+  }, [user])
 
   return (
     <>
